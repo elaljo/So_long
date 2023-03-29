@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	count_words(char const *s, char delimiter)
+int	count_words(char const *s, char delimiter)
 {
 	int	count;
 	int	i;
@@ -33,7 +33,7 @@ static int	count_words(char const *s, char delimiter)
 	return (count);
 }
 
-static int	count_chars(char const *s, char delimiter, int lens)
+int	count_chars(char const *s, char delimiter, int lens)
 {
 	int	i;
 

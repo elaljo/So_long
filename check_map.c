@@ -90,7 +90,6 @@ int	check_rows_walls(char **str)
 int	check_columns_walls(char **str)
 {
 	int	i;
-	int	j;
 	int	len_str;
 
 	i = 0;

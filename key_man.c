@@ -14,122 +14,122 @@
 
 void	move_right(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->str[i])
+	data->key_i = 0;
+	while (data->str[data->key_i])
 	{
-		j = 0;
-		while (data->str[i][j++])
+		data->key_j = 0;
+		while (data->str[data->key_i][data->key_j++])
 		{
-			if ((data->str[i][j] == 'P') && (data->collectibles_counter == 0) && (data->str[i][j + 1] == 'E'))
+			if ((data->str[data->key_i][data->key_j] == 'P')
+				&& (data->collectibles_counter == 0)
+				&& (data->str[data->key_i][data->key_j + 1] == 'E'))
 			{
 				print_player_moves(data);
 				exit(0);
 			}
-			else if ((data->str[i][j] == 'P') && (data->str[i][j + 1] != '1') && (data->str[i][j + 1] != 'E'))
+			else if ((data->str[data->key_i][data->key_j] == 'P')
+							&& (data->str[data->key_i][data->key_j + 1] != '1')
+							&& (data->str[data->key_i][data->key_j + 1] != 'E'))
 			{
-				data->str[i][j] = '0';
-				data->str[i][j + 1] = 'P';
+				move_right_helper(data);
 				put_images_into_window(data);
 				print_player_moves(data);
 				return ;
 			}
 		}
-		i++;
+		data->key_i++;
 	}
 }
 
 void	move_left(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->str[i])
+	data->key_i = 0;
+	while (data->str[data->key_i])
 	{
-		j = 0;
-		while (data->str[i][j++])
+		data->key_j = 0;
+		while (data->str[data->key_i][data->key_j++])
 		{
-			if ((data->str[i][j] == 'P') && (data->collectibles_counter == 0) && (data->str[i][j - 1] == 'E'))
+			if ((data->str[data->key_i][data->key_j] == 'P')
+					&& (data->collectibles_counter == 0)
+					&& (data->str[data->key_i][data->key_j - 1] == 'E'))
 			{
 				print_player_moves(data);
 				exit(0);
 			}
-			else if ((data->str[i][j] == 'P') && (data->str[i][j - 1] != '1') && (data->str[i][j - 1] != 'E'))
+			else if ((data->str[data->key_i][data->key_j] == 'P')
+							&& (data->str[data->key_i][data->key_j - 1] != '1')
+							&& (data->str[data->key_i][data->key_j - 1] != 'E'))
 			{
-				data->str[i][j] = '0';
-				data->str[i][j - 1] = 'P';
+				move_left_helper(data);
 				put_images_into_window(data);
 				print_player_moves(data);
 				return ;
 			}
 		}
-		i++;
+		data->key_i++;
 	}
 }
 
 void	move_forward(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->str[i])
+	data->key_i = 0;
+	while (data->str[data->key_i])
 	{
-		j = 0;
-		while (data->str[i][j++])
+		data->key_j = 0;
+		while (data->str[data->key_i][data->key_j++])
 		{
-			if ((data->str[i][j] == 'P') && (data->collectibles_counter == 0) && (data->str[i - 1][j]) == 'E')
+			if ((data->str[data->key_i][data->key_j] == 'P')
+					&& (data->collectibles_counter == 0)
+					&& (data->str[data->key_i - 1][data->key_j]) == 'E')
 			{
 				print_player_moves(data);
 				exit(0);
 			}
-			else if ((data->str[i][j] == 'P') && (data->str[i - 1][j] != '1') && (data->str[i - 1][j] != 'E'))
+			else if ((data->str[data->key_i][data->key_j] == 'P')
+							&& (data->str[data->key_i - 1][data->key_j] != '1')
+							&& (data->str[data->key_i - 1][data->key_j] != 'E'))
 			{
-				data->str[i][j] = '0';
-				data->str[i - 1][j] = 'P';
+				move_forward_helper(data);
 				put_images_into_window(data);
 				print_player_moves(data);
 				return ;
 			}
 		}
-		i++;
+		data->key_i++;
 	}
 }
 
 void	move_backward(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->str[i])
+	data->key_i = 0;
+	while (data->str[data->key_i])
 	{
-		j = 0;
-		while (data->str[i][j++])
+		data->key_j = 0;
+		while (data->str[data->key_i][data->key_j++])
 		{
-			if ((data->str[i][j] == 'P') && (data->collectibles_counter== 0) && (data->str[i + 1][j] == 'E'))
+			if ((data->str[data->key_i][data->key_j] == 'P')
+					&& (data->collectibles_counter == 0)
+					&& (data->str[data->key_i + 1][data->key_j] == 'E'))
 			{
 				print_player_moves(data);
 				exit(0);
 			}
-			else if ((data->str[i][j] == 'P') && (data->str[i + 1][j] != '1') && (data->str[i + 1][j] != 'E'))
+			else if ((data->str[data->key_i][data->key_j] == 'P')
+							&& (data->str[data->key_i + 1][data->key_j] != '1')
+							&& (data->str[data->key_i + 1][data->key_j] != 'E'))
 			{
-				data->str[i][j] = '0';
-				data->str[i + 1][j] = 'P';
+				move_backward_helper(data);
 				put_images_into_window(data);
 				print_player_moves(data);
 				return ;
 			}
 		}
-		i++;
+		data->key_i++;
 	}
 }
 
 int	keygenerator(int key_code, t_data *data)
-{	
+{
 	if (key_code == ESC)
 		exit(0);
 	else if (key_code == MOVE_RIGHT)

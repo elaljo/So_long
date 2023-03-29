@@ -110,16 +110,3 @@ char	*get_next_line(int fd)
 	saved = copy_to_xyata(saved);
 	return (line);
 }
-
-//#include <stdio.h>
-//int main()
-//{
-//	int fd;
-
-//	 fd = open("t.txt", O_RDONLY);
-//	 printf("%s", get_next_line(fd));
-//	 printf("%s", get_next_line(fd));
-//	 printf("%s", get_next_line(fd));
-//	// printf("%s", get_next_line(fd));
-//	 return (0);
-//}

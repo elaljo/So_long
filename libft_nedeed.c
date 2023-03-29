@@ -19,4 +19,26 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, s, ft_strlen(s));
 }
 
+void	ft_putchar_fd(char c)
+{
+	write(1, &c, 1);
+}
 
+void	ft_putnbr_fd(int nb)
+{
+	long	n;
+
+	n = nb;
+	if (n < 0)
+	{
+		ft_putchar_fd('-');
+		n = n * -1;
+	}
+	if (n >= 0 && n <= 9)
+		ft_putchar_fd(n + '0');
+	else
+	{
+		ft_putnbr_fd(n / 10);
+		ft_putnbr_fd(n % 10);
+	}
+}
