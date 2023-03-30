@@ -14,8 +14,8 @@
 
 void	size_of_r_c(t_data *data)
 {
-	data->len_columns = 0;
 	data->len_rows = 0;
+	data->len_columns = 0;
 	data->len_rows = ft_strlen(data->str[1]);
 	while (data->str[data->len_columns])
 		data->len_columns++;
@@ -48,6 +48,7 @@ void	image_set(t_data *data)
 {
 	data->width = 50;
 	data->height = 50;
+	data->count = 0;
 	data->ptr_1_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/wall.xpm", &data->width, &data->height);
 	data->ptr_0_img = mlx_xpm_file_to_image(data->mlx_ptr,

@@ -1,5 +1,7 @@
 NAME = so_long
 
+SL_BONUS = so_long_bonus
+
 MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = cc
@@ -8,7 +10,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf
 
-SRCS = check_errors.c\
+CFILES = check_errors.c\
 				check_map.c\
 				check_map2.c\
 				check_valid_path.c\
@@ -23,18 +25,40 @@ SRCS = check_errors.c\
 				substr_helper.c\
 				win_man.c
 
-OBJ = ${SRCS:.c=.o}
+CFILES_BONUS = check_errors.c\
+				check_map.c\
+				check_map2.c\
+				check_valid_path.c\
+				ft_split.c\
+				get_next_line_utils.c\
+				get_next_line.c\
+				key_man_2_bonus.c\
+				key_man.c\
+				libft_nedeed_bonus.c\
+				read_map.c\
+				so_long_bonus.c\
+				substr_helper.c\
+				win_man.c
 
-all : ${NAME}
+OBJ = ${CFILES:.c=.o}
+
+OBJ_BONUS = ${CFILES_BONUS:.c=.o}
+
+all : $(NAME)
+
+bonus : $(SL_BONUS)
+
+$(SL_BONUS) : $(OBJ_BONUS)
+	$(CC) $(MLX) $(CFLAGS) $^ -o $@
 
 $(NAME) : $(OBJ)
-	$(CC) $(MLX) $(CFLAGS) $(OBJ) -o $@
-
+	$(CC) $(MLX) $(CFLAGS) $^ -o $@
+	
 clean :
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJ_BONUS)
 
 fclean : clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(SL_BONUS)
 
 re : fclean all
 

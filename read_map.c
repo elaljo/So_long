@@ -19,7 +19,7 @@ char	**read_the_map(int fd)
 	char	**ptr;
 
 	fd = open("map.ber", O_RDONLY);
-	line = get_next_line(fd);  
+	line = get_next_line(fd);
 	fullmap = NULL;
 	while (line != NULL)
 	{

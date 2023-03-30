@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_man_2.c                                        :+:      :+:    :+:   */
+/*   key_man_2_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moelalj <moelalj@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 00:58:25 by moelalj           #+#    #+#             */
-/*   Updated: 2023/03/24 00:58:26 by moelalj          ###   ########.fr       */
+/*   Created: 2023/03/29 22:06:19 by moelalj           #+#    #+#             */
+/*   Updated: 2023/03/29 22:06:24 by moelalj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	move_right_helper(t_data *data)
 {
@@ -38,8 +38,8 @@ void	move_backward_helper(t_data *data)
 
 void	print_player_moves(t_data *data)
 {
-	data->count++;
-	ft_putstr_fd("player moves: ", 1);
-	ft_putnbr(data->count);
-	ft_putchar('\n');
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 275,
+		3, 0x00000000, "Player moves:");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 410,
+		3, 0x00004200, ft_itoa(++data->count));
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moelalj <moelalj@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 12:16:46 by moelalj           #+#    #+#             */
-/*   Updated: 2023/03/01 12:16:48 by moelalj          ###   ########.fr       */
+/*   Created: 2023/03/29 21:41:09 by moelalj           #+#    #+#             */
+/*   Updated: 2023/03/29 21:41:13 by moelalj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -82,9 +82,10 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *str);
 void	ft_bzero(void *s, size_t n);
 														//libft --> nedeed
+char	*ft_itoa(int n);
+int		if_stuff(int n, char *str);
+int		counter(int c);
 void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr(int nb);
-void	ft_putchar(char c);
 
 char	**read_the_map(int fd);
 														//check_funcs
@@ -98,7 +99,7 @@ int		check_empty_map(int fd);
 int		check_nl_inside(int fd);
 int		check_nl_1st_last_line(int fd);
 
-void	open_window(t_data *data);
+void	open_window_bonus(t_data *data);
 int		close_window(t_data *data);
 
 void	size_of_r_c(t_data *data);
