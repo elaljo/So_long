@@ -59,6 +59,7 @@ void	image_set(t_data *data)
 			"./textures/ball.xpm", &data->width, &data->height);
 	data->ptr_p_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/PLAYERKOBE.xpm", &data->width, &data->height);
+	check_images(data);
 }
 
 void	put_images_into_window(t_data *data)

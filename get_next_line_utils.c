@@ -37,7 +37,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (!s1 && !s2)
 		return (0);
-	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1 * sizeof(char));
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!str)
 		return (0);
 	ft_strcpy(str, s1);

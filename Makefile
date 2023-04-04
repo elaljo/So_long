@@ -12,12 +12,11 @@ RM = rm -rf
 
 CFILES = check_errors.c\
 				check_map.c\
-				check_map2.c\
 				check_valid_path.c\
 				ft_split.c\
 				get_next_line_utils.c\
 				get_next_line.c\
-				key_man_2.c\
+				print_moves.c\
 				key_man.c\
 				libft_nedeed.c\
 				read_map.c\
@@ -27,12 +26,11 @@ CFILES = check_errors.c\
 
 CFILES_BONUS = check_errors.c\
 				check_map.c\
-				check_map2.c\
 				check_valid_path.c\
 				ft_split.c\
 				get_next_line_utils.c\
 				get_next_line.c\
-				key_man_2_bonus.c\
+				print_moves_bonus.c\
 				key_man.c\
 				libft_nedeed_bonus.c\
 				read_map.c\

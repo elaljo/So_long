@@ -17,6 +17,8 @@ int	check_characters(char **str)
 	int	i;
 	int	j;
 
+	if (str == NULL)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
@@ -38,15 +40,14 @@ int	check_max_characters(char **str)
 {
 	struct s_maxmembers	s;
 
-	s.j = 0;
-	s.i = 0;
-	s.p = 0;
-	s.c = 0;
-	s.e = 0;
-	while (str[s.i])
+	s = (struct s_maxmembers){0}; //Compound Literals
+	if (str == NULL)
+		return (0);
+	s.i = -1;
+	while (str[++s.i])
 	{
-		s.j = 0;
-		while (str[s.i][s.j++])
+		s.j = -1;
+		while (str[s.i][++s.j])
 		{
 			if (str[s.i][s.j] == 'E')
 				s.e++;
@@ -55,7 +56,6 @@ int	check_max_characters(char **str)
 			else if (str[s.i][s.j] == 'C')
 				s.c++;
 		}
-		s.i++;
 	}
 	if ((s.e != 1) || (s.p != 1) || (s.c < 1))
 		return (0);

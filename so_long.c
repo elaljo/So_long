@@ -37,17 +37,23 @@ int	main(int argc, char *argv[])
 	t_data	*data;
 	int		fd;
 
-	data = malloc(sizeof(t_data));
-	fd = open(argv[1], O_RDONLY);
-	data->str = read_the_map(fd);
-	if (data->str)
-		size_of_r_c(data);
 	if (argc == 2)
 	{
-		if (check_all_funcs(argv, data->str, fd) == 1)
-			open_window(data);
-		else
-			ft_putstr_fd("Eroor\n ~Something wrong with the map, Fix it🤬", 1);
+		fd = open(argv[1], O_RDONLY);
+		if (fd < 0)
+		{
+			ft_putstr_fd("You have no file to read from", 1);
+			return (1);
+		}
+		data = malloc(sizeof(t_data));
+		data->str = read_the_map(fd);
+		if (data->str)
+		{
+			size_of_r_c(data);
+			if (check_all_funcs(argv, *data) == 1)
+				open_window(data);
+		}
+		ft_putstr_fd("Eroor\n ~Something wrong with the map, Fix it🤬", 1);
 	}
 	else
 		ft_putstr_fd("Bad parameters input, Try again!", 1);

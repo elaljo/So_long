@@ -13,6 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -39,8 +40,6 @@ typedef struct s_data
 	int		j;
 	int		count;
 	int		collectibles_counter;
-	int		key_i;
-	int		key_j;
 
 	void	*ptr_1_img;
 	void	*ptr_0_img;
@@ -63,7 +62,7 @@ typedef struct s_data
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000000
 # endif
-//get_next_line
+														//get_next_line
 char	*ft_strcpy(char *dst, char *src);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
@@ -93,13 +92,10 @@ int		check_max_characters(char **str);
 int		check_rows_walls(char **str);
 int		check_columns_walls(char **str);
 int		check_if_rectangular(char **str);
-int		check_ending_extension(char **argv);
-int		check_empty_map(int fd);
-int		check_nl_inside(int fd);
-int		check_nl_1st_last_line(int fd);
-
+int		check_ending_extension(char *argv[]);
 void	open_window(t_data *data);
 int		close_window(t_data *data);
+void	check_images(t_data *data);
 
 void	size_of_r_c(t_data *data);
 void	put_floor_in_window(t_data *data);
@@ -108,17 +104,10 @@ void	put_collectibles_into_window(t_data *data);
 void	image_set(t_data *data);
 
 int		keygenerator(int key_code, t_data *data);
-void	move_right(t_data *data);
-void	move_left(t_data *data);
-void	move_forward(t_data *data);
-void	move_backward(t_data *data);
+void	move(t_data *data, int H, int V);
 
 void	print_player_moves(t_data *data);
-void	move_right_helper(t_data *data);
-void	move_left_helper(t_data *data);
-void	move_forward_helper(t_data *data);
-void	move_backward_helper(t_data *data);
 
-int		check_all_funcs(char *argv[], char **str, int fd);
+int		check_all_funcs(char *argv[], t_data data);
 
 #endif

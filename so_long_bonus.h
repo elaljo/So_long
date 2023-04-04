@@ -39,8 +39,6 @@ typedef struct s_data
 	int		j;
 	int		count;
 	int		collectibles_counter;
-	int		key_i;
-	int		key_j;
 
 	void	*ptr_1_img;
 	void	*ptr_0_img;
@@ -95,9 +93,6 @@ int		check_rows_walls(char **str);
 int		check_columns_walls(char **str);
 int		check_if_rectangular(char **str);
 int		check_ending_extension(char **argv);
-int		check_empty_map(int fd);
-int		check_nl_inside(int fd);
-int		check_nl_1st_last_line(int fd);
 
 void	open_window_bonus(t_data *data);
 int		close_window(t_data *data);
@@ -109,17 +104,10 @@ void	put_collectibles_into_window(t_data *data);
 void	image_set(t_data *data);
 
 int		keygenerator(int key_code, t_data *data);
-void	move_right(t_data *data);
-void	move_left(t_data *data);
-void	move_forward(t_data *data);
-void	move_backward(t_data *data);
+void	move(t_data *data, int H, int V);
 
 void	print_player_moves(t_data *data);
-void	move_right_helper(t_data *data);
-void	move_left_helper(t_data *data);
-void	move_forward_helper(t_data *data);
-void	move_backward_helper(t_data *data);
 
-int		check_all_funcs(char *argv[], char **str, int fd);
+int		check_all_funcs(char *argv[], t_data data);
 
 #endif

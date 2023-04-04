@@ -12,119 +12,32 @@
 
 #include "so_long.h"
 
-void	move_right(t_data *data)
+void	move(t_data *data, int H, int V)
 {
-	data->key_i = 0;
-	while (data->str[data->key_i])
+	data->i = -1;
+	while (data->str[++data->i])
 	{
-		data->key_j = 0;
-		while (data->str[data->key_i][data->key_j++])
+		data->j = -1;
+		while (data->str[data->i][++data->j])
 		{
-			if ((data->str[data->key_i][data->key_j] == 'P')
+			if ((data->str[data->i][data->j] == 'P')
 				&& (data->collectibles_counter == 0)
-				&& (data->str[data->key_i][data->key_j + 1] == 'E'))
+				&& (data->str[data->i + V][data->j + H] == 'E'))
 			{
 				print_player_moves(data);
 				exit(0);
 			}
-			else if ((data->str[data->key_i][data->key_j] == 'P')
-							&& (data->str[data->key_i][data->key_j + 1] != '1')
-							&& (data->str[data->key_i][data->key_j + 1] != 'E'))
+			else if ((data->str[data->i][data->j] == 'P')
+				&& (data->str[data->i + V][data->j + H] != '1')
+				&& (data->str[data->i + V][data->j + H] != 'E'))
 			{
-				move_right_helper(data);
+				data->str[data->i][data->j] = '0';
+				data->str[data->i + V][data->j + H] = 'P';
 				put_images_into_window(data);
 				print_player_moves(data);
 				return ;
 			}
 		}
-		data->key_i++;
-	}
-}
-
-void	move_left(t_data *data)
-{
-	data->key_i = 0;
-	while (data->str[data->key_i])
-	{
-		data->key_j = 0;
-		while (data->str[data->key_i][data->key_j++])
-		{
-			if ((data->str[data->key_i][data->key_j] == 'P')
-					&& (data->collectibles_counter == 0)
-					&& (data->str[data->key_i][data->key_j - 1] == 'E'))
-			{
-				print_player_moves(data);
-				exit(0);
-			}
-			else if ((data->str[data->key_i][data->key_j] == 'P')
-							&& (data->str[data->key_i][data->key_j - 1] != '1')
-							&& (data->str[data->key_i][data->key_j - 1] != 'E'))
-			{
-				move_left_helper(data);
-				put_images_into_window(data);
-				print_player_moves(data);
-				return ;
-			}
-		}
-		data->key_i++;
-	}
-}
-
-void	move_forward(t_data *data)
-{
-	data->key_i = 0;
-	while (data->str[data->key_i])
-	{
-		data->key_j = 0;
-		while (data->str[data->key_i][data->key_j++])
-		{
-			if ((data->str[data->key_i][data->key_j] == 'P')
-					&& (data->collectibles_counter == 0)
-					&& (data->str[data->key_i - 1][data->key_j]) == 'E')
-			{
-				print_player_moves(data);
-				exit(0);
-			}
-			else if ((data->str[data->key_i][data->key_j] == 'P')
-							&& (data->str[data->key_i - 1][data->key_j] != '1')
-							&& (data->str[data->key_i - 1][data->key_j] != 'E'))
-			{
-				move_forward_helper(data);
-				put_images_into_window(data);
-				print_player_moves(data);
-				return ;
-			}
-		}
-		data->key_i++;
-	}
-}
-
-void	move_backward(t_data *data)
-{
-	data->key_i = 0;
-	while (data->str[data->key_i])
-	{
-		data->key_j = 0;
-		while (data->str[data->key_i][data->key_j++])
-		{
-			if ((data->str[data->key_i][data->key_j] == 'P')
-					&& (data->collectibles_counter == 0)
-					&& (data->str[data->key_i + 1][data->key_j] == 'E'))
-			{
-				print_player_moves(data);
-				exit(0);
-			}
-			else if ((data->str[data->key_i][data->key_j] == 'P')
-							&& (data->str[data->key_i + 1][data->key_j] != '1')
-							&& (data->str[data->key_i + 1][data->key_j] != 'E'))
-			{
-				move_backward_helper(data);
-				put_images_into_window(data);
-				print_player_moves(data);
-				return ;
-			}
-		}
-		data->key_i++;
 	}
 }
 
@@ -133,12 +46,12 @@ int	keygenerator(int key_code, t_data *data)
 	if (key_code == ESC)
 		exit(0);
 	else if (key_code == MOVE_RIGHT)
-		move_right(data);
+		move(data, 1, 0);
 	else if (key_code == MOVE_LEFT)
-		move_left(data);
+		move(data, -1, 0);
 	else if (key_code == MOVE_FORWARD)
-		move_forward(data);
+		move(data, 0, -1);
 	else if (key_code == MOVE_BACKWARD)
-		move_backward(data);
+		move(data, 0, 1);
 	return (1);
 }
