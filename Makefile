@@ -16,13 +16,15 @@ CFILES = check_errors.c\
 				ft_split.c\
 				get_next_line_utils.c\
 				get_next_line.c\
-				print_moves.c\
+				extra_funcs.c\
 				key_man.c\
 				libft_nedeed.c\
 				read_map.c\
 				so_long.c\
 				substr_helper.c\
-				win_man.c
+				win_man.c\
+				win_man_both.c\
+				free_m.c
 
 CFILES_BONUS = check_errors.c\
 				check_map.c\
@@ -30,13 +32,15 @@ CFILES_BONUS = check_errors.c\
 				ft_split.c\
 				get_next_line_utils.c\
 				get_next_line.c\
-				print_moves_bonus.c\
-				key_man.c\
+				extra_funcs.c\
+				key_man_bonus.c\
 				libft_nedeed_bonus.c\
 				read_map.c\
 				so_long_bonus.c\
 				substr_helper.c\
-				win_man.c
+				win_man_bonus.c\
+				win_man_both.c\
+				free_m.c
 
 OBJ = ${CFILES:.c=.o}
 
@@ -48,7 +52,7 @@ bonus : $(SL_BONUS)
 
 $(SL_BONUS) : $(OBJ_BONUS)
 	$(CC) $(MLX) $(CFLAGS) $^ -o $@
-
+	
 $(NAME) : $(OBJ)
 	$(CC) $(MLX) $(CFLAGS) $^ -o $@
 	

@@ -15,10 +15,8 @@
 int	check_ending_extension(char *argv[])
 {
 	int		len_file;
-	int		i;
 	char	*file_name;
 
-	i = 0;
 	file_name = argv[1];
 	len_file = ft_strlen(argv[1]);
 	if ((file_name[len_file - 1] != 'r') || (file_name[len_file - 2] != 'e')
@@ -37,7 +35,7 @@ int	check_all_funcs(char *argv[], t_data data)
 		return (0);
 	if (check_rows_walls(data.str) != 1)
 		return (0);
-	if (check_columns_walls(data.str) != 1) 
+	if (check_columns_walls(data.str) != 1)
 		return (0);
 	if (check_if_rectangular(data.str) != 1)
 		return (0);
@@ -46,17 +44,11 @@ int	check_all_funcs(char *argv[], t_data data)
 
 void	check_images(t_data *data)
 {
-	if (!data->ptr_0_img)
-		ft_putstr_fd("Error - image", 1);
-	else if (!data->ptr_1_img)
-		ft_putstr_fd("Error - image", 1);
-	else if (!data->ptr_c_img)
-		ft_putstr_fd("Error - image", 1);
-	else if (!data->ptr_e_img)
-		ft_putstr_fd("Error - image", 1);
-	else if (!data->ptr_p_img)
-		ft_putstr_fd("Error - image", 1);
 	if (!data->ptr_0_img || !data->ptr_1_img || !data->ptr_c_img
 		|| !data->ptr_e_img || !data->ptr_p_img)
-		exit(1);
+	{
+		ft_putstr_fd("Error - image", 1);
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		free_without_open_false(data);
+	}
 }

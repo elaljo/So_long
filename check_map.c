@@ -17,8 +17,6 @@ int	check_characters(char **str)
 	int	i;
 	int	j;
 
-	if (str == NULL)
-		return (0);
 	i = 0;
 	while (str[i])
 	{
@@ -40,7 +38,7 @@ int	check_max_characters(char **str)
 {
 	struct s_maxmembers	s;
 
-	s = (struct s_maxmembers){0}; //Compound Literals
+	s = (struct s_maxmembers){0};
 	if (str == NULL)
 		return (0);
 	s.i = -1;

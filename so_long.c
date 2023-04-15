@@ -12,50 +12,29 @@
 
 #include "so_long.h"
 
-int	close_window(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	exit (0);
-	return (0);
-}
-
-void	open_window(t_data *data)
-{
-	data->mlx_ptr = mlx_init();
-	data->win_ptr = mlx_new_window(data->mlx_ptr,
-			data->len_rows * 50, data->len_columns * 50, "KOBE FOREVER");
-	image_set(data);
-	put_floor_in_window(data);
-	put_images_into_window(data);
-	mlx_key_hook(data->win_ptr, keygenerator, data);
-	mlx_hook(data->win_ptr, 17, 0, close_window, data);
-	mlx_loop(data->mlx_ptr);
-}
-
 int	main(int argc, char *argv[])
 {
-	t_data	*data;
+	t_data	data;
 	int		fd;
 
+	fd = 0;
 	if (argc == 2)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd < 0)
+		open_fd_check(&fd, argv[1]);
+		read_the_map(fd, &data);
+		if (data.str)
 		{
-			ft_putstr_fd("You have no file to read from", 1);
-			return (1);
+			size_of_r_c_check_map_big(&data);
+			find_cor_player(&data);
+			if (check_all_funcs(argv, data) == 1)
+			{
+				call_valid_path_funcs(&data);
+				open_window(&data);
+			}
 		}
-		data = malloc(sizeof(t_data));
-		data->str = read_the_map(fd);
-		if (data->str)
-		{
-			size_of_r_c(data);
-			if (check_all_funcs(argv, *data) == 1)
-				open_window(data);
-		}
-		ft_putstr_fd("Eroor\n ~Something wrong with the map, Fix it🤬", 1);
+		print_free_and_exit(&data);
 	}
 	else
-		ft_putstr_fd("Bad parameters input, Try again!", 1);
+		print_and_exit_param();
 	return (0);
 }

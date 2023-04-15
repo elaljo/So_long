@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_man.c                                          :+:      :+:    :+:   */
+/*   key_man_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moelalj <moelalj@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 17:34:17 by moelalj           #+#    #+#             */
-/*   Updated: 2023/03/22 17:34:20 by moelalj          ###   ########.fr       */
+/*   Created: 2023/04/07 12:05:41 by moelalj           #+#    #+#             */
+/*   Updated: 2023/04/07 12:05:42 by moelalj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	move(t_data *data, int h, int v)
 {
@@ -23,18 +23,15 @@ void	move(t_data *data, int h, int v)
 			if ((data->str[data->i][data->j] == 'P')
 				&& (data->collectibles_counter == 0)
 				&& (data->str[data->i + v][data->j + h] == 'E'))
-			{
-				print_moves(data);
 				you_won(data);
-			}
 			else if ((data->str[data->i][data->j] == 'P')
 				&& (data->str[data->i + v][data->j + h] != '1')
 				&& (data->str[data->i + v][data->j + h] != 'E'))
 			{
 				data->str[data->i][data->j] = '0';
 				data->str[data->i + v][data->j + h] = 'P';
-				print_moves(data);
 				put_images_into_window(data);
+				print_moves_bonus(data);
 				return ;
 			}
 		}
