@@ -33,10 +33,10 @@ void	read_the_map(int fd, t_data *data)
 	line = get_next_line(fd);
 	if (line == NULL)
 		print_and_exit(NULL);
-	if (line[0] == '\n')
-		print_and_exit(line);
 	while (line != NULL)
 	{
+		if (line[0] == '\n')
+			print_and_exit(line);
 		fullmap = ft_strjoin(fullmap, line);
 		free(line);
 		line = get_next_line(fd);

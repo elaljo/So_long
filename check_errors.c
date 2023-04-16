@@ -47,8 +47,22 @@ void	check_images(t_data *data)
 	if (!data->ptr_0_img || !data->ptr_1_img || !data->ptr_c_img
 		|| !data->ptr_e_img || !data->ptr_p_img)
 	{
-		ft_putstr_fd("Error - image", 1);
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		ft_putstr_fd("Error - i cannot find the image", 1);
+		destroy_images(data);
 		free_without_open_false(data);
 	}
+}
+
+void	destroy_images(t_data *data)
+{
+	if (data->ptr_0_img)
+		mlx_destroy_image(data->mlx_ptr, data->ptr_0_img);
+	if (data->ptr_1_img)
+		mlx_destroy_image(data->mlx_ptr, data->ptr_1_img);
+	if (data->ptr_c_img)
+		mlx_destroy_image(data->mlx_ptr, data->ptr_c_img);
+	if (data->ptr_e_img)
+		mlx_destroy_image(data->mlx_ptr, data->ptr_e_img);
+	if (data->ptr_p_img)
+		mlx_destroy_image(data->mlx_ptr, data->ptr_p_img);
 }

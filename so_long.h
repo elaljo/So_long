@@ -115,5 +115,6 @@ void	free_without_open_false(t_data *data);
 void	free_with_open_false(t_data *data);
 void	free_with_open_true(t_data *data);
 void	print_and_exit_param(void);
+void	destroy_images(t_data *data);
 
 #endif

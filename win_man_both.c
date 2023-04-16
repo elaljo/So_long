@@ -60,7 +60,7 @@ void	image_set(t_data *data)
 	data->ptr_e_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/exit.xpm", &data->tex_width, &data->tex_height);
 	data->ptr_c_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./textures/ball.xpm", &data->tex_width, &data->tex_height);
+			"./es/ball.xpm", &data->tex_width, &data->tex_height);
 	data->ptr_p_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/PLAYERKOBE.xpm", &data->tex_width, &data->tex_height);
 	check_images(data);
