@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 void	open_fd_check(int *fd, char *file)
 {
@@ -23,11 +22,21 @@ void	open_fd_check(int *fd, char *file)
 	}
 }
 
+void	check_last_nl(char *fullmap)
+{
+	int	i;
+
+	i = 0;
+	while (fullmap[i])
+		i++;
+	if (fullmap[i - 1] == '\n')
+		print_and_exit(fullmap);
+}
+
 void	read_the_map(int fd, t_data *data)
 {
 	char	*fullmap;
 	char	*line;
-	int		i;
 
 	fullmap = NULL;
 	line = get_next_line(fd);
@@ -36,16 +45,15 @@ void	read_the_map(int fd, t_data *data)
 	while (line != NULL)
 	{
 		if (line[0] == '\n')
+		{
+			free(fullmap);
 			print_and_exit(line);
+		}
 		fullmap = ft_strjoin(fullmap, line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	i = 0;
-	while (fullmap[i])
-		i++;
-	if (fullmap[i - 1] == '\n')
-		print_and_exit(fullmap);
+	check_last_nl(fullmap);
 	data->str = ft_split(fullmap, '\n');
 	data->e_c_map = ft_split(fullmap, '\n');
 	data->e_d_map = ft_split(fullmap, '\n');

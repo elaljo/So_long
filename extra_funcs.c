@@ -22,13 +22,13 @@ void	call_valid_path_funcs(t_data *data)
 
 void	print_free_and_exit(t_data *data)
 {
-	ft_putstr_fd("Eroor\n ~Something wrong with the map, Fix it", 1);
+	ft_putstr_fd("Eroor\n ~Something wrong with the map, Fix it", 2);
 	free_without_open_false(data);
 }	
 
 void	print_and_exit_param(void)
 {
-	ft_putstr_fd("Bad parameters input, Try again!", 1);
+	ft_putstr_fd("Bad parameters input, Try again!", 2);
 	exit (1);
 }
 
@@ -36,7 +36,7 @@ void	print_and_exit(char *freestr)
 {
 	if (freestr)
 		free(freestr);
-	ft_putstr_fd("Eroor\n ~Something wrong with the map, Fix it", 1);
+	ft_putstr_fd("Eroor\n ~Something wrong with the map, Fix it", 2);
 	exit (1);
 }	
 

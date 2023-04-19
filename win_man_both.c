@@ -20,7 +20,7 @@ void	size_of_r_c_check_map_big(t_data *data)
 		data->len_columns++;
 	if ((data->len_columns > 28) || (data->len_rows > 51))
 	{
-		ft_putstr_fd("Map to big\n", 1);
+		ft_putstr_fd("Map to big\n", 2);
 		free_without_open_false(data);
 	}
 }
@@ -60,7 +60,7 @@ void	image_set(t_data *data)
 	data->ptr_e_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/exit.xpm", &data->tex_width, &data->tex_height);
 	data->ptr_c_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./es/ball.xpm", &data->tex_width, &data->tex_height);
+			"./textures/ball.xpm", &data->tex_width, &data->tex_height);
 	data->ptr_p_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./textures/PLAYERKOBE.xpm", &data->tex_width, &data->tex_height);
 	check_images(data);
